@@ -37,25 +37,38 @@ class Fraction
 		void operator=(const Fraction & frac);
 		void operator=(const int num);
 		bool operator==(Fraction & frac);
+		bool operator!=(Fraction & frac);
 		Fraction operator+(const Fraction & frac);
 		Fraction operator-(const Fraction & frac);
 		Fraction operator*(const Fraction & frac);
 		Fraction operator/(const Fraction & frac);
-
+		bool operator<(const Fraction & frac);
+		bool operator>(const Fraction & frac);
+		bool operator<=(const Fraction & frac);
+		bool operator>=(const Fraction & frac);
 		Fraction operator-() 		const;
 		Fraction inverseFraction()  const;
-
-		// Very ugly
 
 		friend Fraction operator+(const int num, const Fraction & frac);
 		friend Fraction operator-(const int num, const Fraction & frac);
 		friend Fraction operator*(const int num, const Fraction & frac);
 		friend Fraction operator/(const int num, const Fraction & frac);
+		friend bool operator<(const int num, const Fraction & frac);
+		friend bool operator>(const int num, const Fraction & frac);
+		friend bool operator<=(const int num, const Fraction & frac);
+		friend bool operator>=(const int num, const Fraction & frac);
+
 		Fraction operator+(const int num);
 		Fraction operator-(const int num);
 		Fraction operator*(const int num);
 		Fraction operator/(const int num);
+		bool operator<(const int num);
+		bool operator>(const int num);
+		bool operator<=(const int num);
+		bool operator>=(const int num);
 
 		int getNumerator() 		const;
 		int getDenominator()	const;
+
+		Fraction abs();
 };

@@ -1,5 +1,11 @@
 #include "fraction.h"
 
+Fraction toFraction(int num)
+{
+	Fraction frac(num);
+	return frac;
+}
+
 Fraction::Fraction(int numerator, int denominator)
 {
 	if (denominator == 0)
@@ -23,7 +29,8 @@ void Fraction::irregularFraction()
 		this -> numerator   = -(this -> numerator);
 		this -> denominator = -(this -> denominator);
 	}
-	const int g = math::gcd(std::abs(this -> numerator), std::abs(this -> denominator));
+	const int g = math::gcd(std::abs(this -> numerator), 
+							std::abs(this -> denominator));
 	(this -> numerator)   /= g;
 	(this -> denominator) /= g;
 	return ;
@@ -53,10 +60,12 @@ bool Fraction::operator==(Fraction & frac)
 	{
 		return true;
 	}
-	else
-	{
-		return false;
-	}
+	return false;
+}
+
+bool Fraction::operator!=(Fraction & frac)
+{
+	return !((*this) == frac);
 }
 
 Fraction Fraction::operator-() const
@@ -109,50 +118,42 @@ Fraction Fraction::operator/(const Fraction & frac)
 
 Fraction Fraction::operator+(const int num)
 {
-	Fraction f(num);
-	return (*this) + f;
+	return (*this) + toFraction(num);
 }
 
 Fraction Fraction::operator-(const int num)
 {
-	Fraction f(num);
-	return (*this) - f;
+	return (*this) - toFraction(num);
 }
 
 Fraction Fraction::operator*(const int num)
 {
-	Fraction f(num);
-	return (*this) * f;
+	return (*this) * toFraction(num);
 }
 
 Fraction Fraction::operator/(const int num)
 {
-	Fraction f(num);
-	return (*this) / f;
+	return (*this) / toFraction(num);
 }
 
 Fraction operator+(const int num, Fraction & frac)
 {
-	Fraction f(num);
-	return f + frac;
+	return frac + num;
 }
 
 Fraction operator-(const int num, Fraction & frac)
 {
-	Fraction f(num);
-	return f - frac;
+	return (-frac) + num;
 }
 
 Fraction operator*(const int num, Fraction & frac)
 {
-	Fraction f(num);
-	return f * frac;
+	return frac * num;
 }
 
 Fraction operator/(const int num, Fraction & frac)
 {
-	Fraction f(num);
-	return f / frac;
+	return frac.inverseFraction() * num;
 }
 
 int Fraction::getNumerator()	const
@@ -163,4 +164,68 @@ int Fraction::getNumerator()	const
 int Fraction::getDenominator() 	const
 {
 	return (this -> denominator);
+}
+
+bool Fraction::operator<(const Fraction & frac)
+{
+	Fraction result = (*this) - frac;
+	return (result.getNumerator() 
+		  * result.getDenominator() < 0);
+}
+
+bool Fraction::operator>(const Fraction & frac)
+{
+	Fraction result = (*this) - frac;
+	return (result.getNumerator() 
+		  * result.getDenominator() > 0);
+}
+
+bool Fraction::operator<=(const Fraction & frac)
+{
+	return !((*this) > frac);
+}
+
+bool Fraction::operator>=(const Fraction & frac)
+{
+	return !((*this) < frac);
+}
+
+bool Fraction::operator>(const int num)
+{
+	return (*this) > toFraction(num);
+}
+
+bool Fraction::operator<(const int num)
+{
+	return (*this) < toFraction(num);
+}
+
+bool Fraction::operator>=(const int num)
+{
+	return !((*this) < num);
+}
+
+bool Fraction::operator<=(const int num)
+{
+	return !((*this) > num);
+}
+
+bool operator>(const int num, Fraction & frac)
+{
+	return toFraction(num) > frac;
+}
+
+bool operator<(const int num, Fraction & frac)
+{
+	return toFraction(num) < frac;
+}
+
+bool operator>=(const int num, Fraction & frac)
+{
+	return !(num < frac);
+}
+
+bool operator<=(const int num, Fraction & frac)
+{
+	return !(num > frac);
 }
