@@ -328,8 +328,16 @@ int main()
         }
     }
 
-	
-	vector <Fraction> result = gaussianElimination(deterToVector(deter, at_totnum, reanum + pronum));
+	vector <Fraction> result;
+
+	try
+	{
+		result = gaussianElimination(deterToVector(deter, at_totnum, reanum + pronum));
+	}
+	catch (const char * e)
+	{
+		cerr << e;
+	}
 
 	const int len = result.size();
 

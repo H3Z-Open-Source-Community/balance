@@ -1,7 +1,7 @@
 OBJS = main.o fraction.o elimination.o
 
 main: $(OBJS)
-	g++ $(OBJS) -o main
+	g++ $(OBJS) -o main -g
 
 main.o: mattersbyHerminos.cpp
 	g++ -c mattersbyHerminos.cpp -o main.o

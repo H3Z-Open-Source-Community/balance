@@ -1,6 +1,5 @@
 #include "elimination.h"
 
-
 vector <vector <Fraction> > deterToVector(int nums[100][100], int x, int y)
 {
 	vector <vector <Fraction> > vec;
@@ -31,7 +30,7 @@ vector <Fraction> gaussianElimination(vector <vector <Fraction> > nums)
 		int j = 1, m = i;
 		for (j = i + 1; j <= n; ++j)
 		{
-			if (math::anyAbs(nums[j][i]) > math::anyAbs(nums[j][m]))
+			if (math::anyAbs(nums[j][i]) > math::anyAbs(nums[m][i]))
 			{
 				m = j;
 			}
