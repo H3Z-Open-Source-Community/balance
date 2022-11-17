@@ -38,6 +38,8 @@ matter rea[21];//反应物reactant
 matter pro[21];//生成物product
 int main()
 {
+    cout<<"欢迎使用由哈三中信息科学协会编程分部开发的应用程序"<<endl;
+    cout<<"您的输入应包括四行:分别为反应物数量,反应物化学式,生成物数量,生成物化学式"<<endl;
     cin>>reanum;
     for(int i=1;i<=reanum;i++)
     {
@@ -48,6 +50,7 @@ int main()
     {
         cin>>pro[i].name;
     }
+    cout<<"您输入的化学方程式的化学计量数应为"<<endl;
     for(int r=1;r<=reanum;r++)//对反应物进行处理
     {
         rea[r].if_bra=false;
@@ -355,4 +358,6 @@ int main()
 		result[i].irregularFraction();
 		cout << result[i].getNumerator() << ' ';
 	}
+    cout<<endl;
+    cout<<"主要开发者:Herminos,如虎添翼,AtomaAlpako"<<endl;
 }   
