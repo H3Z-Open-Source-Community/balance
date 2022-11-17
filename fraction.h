@@ -9,7 +9,9 @@ namespace math
 	{
 		if (n2 > n1)
 		{
-			std::swap(n1, n2);
+			Number n3 = n1;
+			n1 = n2;
+			n2 = n3;
 		}
 		if (n2 == 0)
 		{
