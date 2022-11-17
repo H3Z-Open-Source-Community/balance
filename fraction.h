@@ -23,6 +23,16 @@ namespace math
 	{
 		return n1 * n2 / gcd(n1, n2);
 	}
+
+	template <class Number>
+	Number anyAbs(Number num)
+	{
+		if (num < 0)
+		{
+			return -num;
+		}
+		return num;
+	}
 }
 
 class Fraction
