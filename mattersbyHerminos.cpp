@@ -1,9 +1,12 @@
 #include<iostream>
 #include<cstring>
+
+#include "elimination.h"
+
 using namespace std;
 int reanum,pronum;//反应物和生成物数量
 int at_totnum=1;
-int deter[40][40];//行列式
+int deter[100][100];//行列式
 int judge(char m)
 {
     if(m<=90&&m>=65)
@@ -324,4 +327,24 @@ int main()
             deter[j][i]=-1*bucket[i][listx[j]][listy[j]];
         }
     }
+
+	
+	vector <Fraction> result = gaussianElimination(deterToVector(deter, at_totnum, reanum + pronum));
+
+	const int len = result.size();
+
+	int lcm = 1;
+
+	for (int i = 0; i < len; ++i)
+	{
+		result[i].irregularFraction();
+		lcm = math::lcm(result[i].getDenominator(), lcm);
+	}
+
+	for (int i = 0; i < len; ++i)
+	{
+		result[i] = result[i] * lcm;
+		result[i].irregularFraction();
+		cout << result[i].getNumerator() << ' ';
+	}
 }   

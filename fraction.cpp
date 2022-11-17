@@ -50,20 +50,21 @@ void Fraction::operator=(const int num)
 	return ;
 }
 
-bool Fraction::operator==(Fraction & frac)
+bool Fraction::operator==(const Fraction & frac)
 {
 	this -> irregularFraction();
-	frac.irregularFraction();
+	Fraction f = frac;
+	f.irregularFraction();
 
-	if ((this -> numerator)   == frac.numerator &&
-		(this -> denominator) == frac.denominator)
+	if ((this -> numerator)   == f.numerator &&
+		(this -> denominator) == f.denominator)
 	{
 		return true;
 	}
 	return false;
 }
 
-bool Fraction::operator!=(Fraction & frac)
+bool Fraction::operator!=(const Fraction & frac)
 {
 	return !((*this) == frac);
 }

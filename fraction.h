@@ -46,8 +46,8 @@ class Fraction
 		void irregularFraction();
 		void operator=(const Fraction & frac);
 		void operator=(const int num);
-		bool operator==(Fraction & frac);
-		bool operator!=(Fraction & frac);
+		bool operator==(const Fraction & frac);
+		bool operator!=(const Fraction & frac);
 		Fraction operator+(const Fraction & frac);
 		Fraction operator-(const Fraction & frac);
 		Fraction operator*(const Fraction & frac);
