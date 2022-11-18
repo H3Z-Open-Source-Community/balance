@@ -27,5 +27,5 @@ After downloading it, all you have to do is to open the terminal, enter folder "
  
  # License
  
- [GPLv2](http://www.gnu.de/documents/gpl-2.0.en.html) © Harbin No.3 High School Information Science Programming Association Division
+ [GPLv2](http://www.gnu.de/documents/gpl-2.0.en.html) © Harbin No.3 High School Information Science Association Programming Division
  
