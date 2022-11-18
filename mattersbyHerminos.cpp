@@ -22,8 +22,7 @@ int judge(char m)
     else
         return 114514+1919810;
 }
-int bucket[40][30][30]={0};//使用桶进行元素判重
-int listx[40],listy[40];
+
 struct matter//定义每一个化合物为结构体(这里的化合物)
 {
     string name;
@@ -38,6 +37,8 @@ matter rea[21];//反应物reactant
 matter pro[21];//生成物product
 int main()
 {
+    int bucket[40][30][30]={0};//使用桶进行元素判重
+    int listx[40],listy[40];
     cout<<"欢迎使用由哈三中信息科学协会编程分部开发的应用程序"<<endl;
     cout<<"您的输入应包括四行:分别为反应物数量,反应物化学式,生成物数量,生成物化学式"<<endl;
     cin>>reanum;
@@ -265,7 +266,7 @@ int main()
             {
                 bucket[i][rea[i].at_name[j][0]-'A'+1][0]+=rea[i].at_num[j];
                 bool if_rep=false;
-                for(int k=1;k<=j;k++)//循环判重
+                for(int k=1;k<=at_totnum;k++)//循环判重
                 {
                     if(listx[k]==rea[i].at_name[j][0]-'A'+1&&listy[k]==0)//若发现重复
                     {
@@ -284,7 +285,7 @@ int main()
             {
                 bucket[i][rea[i].at_name[j][0]-'A'+1][rea[i].at_name[j][1]-'a'+1]+=rea[i].at_num[j];
                 bool if_rep=false;
-                for(int k=1;k<=j;k++)
+                for(int k=1;k<=at_totnum;k++)
                 {
                     if(listx[k]==rea[i].at_name[j][0]-'A'+1&&listy[k]==rea[i].at_name[j][1]-'a'+1)
                     {
@@ -330,7 +331,6 @@ int main()
             deter[j][i]=-1*bucket[i][listx[j]][listy[j]];
         }
     }
-
 	vector <Fraction> result;
 
 	try
@@ -360,4 +360,4 @@ int main()
 	}
     cout<<endl;
     cout<<"主要开发者:Herminos,如虎添翼,AtomaAlpako"<<endl;
-}   
+} 
