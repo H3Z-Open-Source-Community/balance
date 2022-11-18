@@ -4,7 +4,7 @@ main: $(OBJS)
 	g++ $(OBJS) -o main -g
 
 main.o: mattersbyHerminos.cpp
-	g++ -c mattersbyHerminos.cpp -o main.o
+	g++ -c mattersbyGZX.cpp -o main.o
 
 fraction: fraction.h fraction.cpp
 	g++ -c fraction.cpp -o fraction.o

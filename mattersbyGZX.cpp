@@ -1,8 +1,11 @@
 #include<iostream>
 #include<cstring>
 #include<unordered_map>
+
+#include "elimination.h"
+
 using namespace std;
-const int maxn=15;
+const int maxn=100;
 string tmp_ele_name,ele_kinds[maxn],names[maxn*2];
 int in_num,out_num,mat_len,brac_times,times,kinds;
 int deter[maxn][maxn],col,line;
@@ -165,22 +168,32 @@ int main()
         for(int j=1;j<=out_num;j++)
             deter[i][in_num+j]=0-out_matter[j].elements[ele_kinds[i]];
     }
-    for(int i=1;i<=in_num;i++)
-        names[i]=in_matter[i].name;
-    for (int i=1;i<=out_num;i++)
-        names[in_num+i]=out_matter[i].name;
-    // 下面是输出，大佬可以这部分删掉换成行列式处理的代码
-    // 行列式用二维数组deter存储，化学式用names存储
-    for(int i=1;i<=line;i++)
-        cout<<names[i]<<' ';
-    cout<<endl;
-    for(int i=1;i<=col;i++)
-    {
-        for(int j=1;j<=line;j++)
-        {
-            cout<<deter[i][j]<<' ';
-        }
-        cout<<endl;
-    }
-    // Your code goes here
+
+	vector <Fraction> result;
+
+	try
+	{
+		result = gaussianElimination(deterToVector(deter, col, line));
+	}
+	catch(const char * e)
+	{
+		cerr << e;
+	}
+
+	const int len = result.size();
+
+	int lcm = 1;
+	
+	for (int i = 0; i < len; ++i)
+	{
+		result[i].irregularFraction();
+		lcm = math::lcm(result[i].getDenominator(), lcm);
+	}
+
+	for (int i = 0; i < len; ++i)
+	{
+		result[i] = result[i] * lcm;
+		result[i].irregularFraction();
+		cout  << result[i].getNumerator() << ' ';
+	}
 }
