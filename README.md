@@ -7,9 +7,9 @@ The project is written in pure C++.<br>
 # Install
 We use GNU Make as the compilation tool.<br>
 So it’s pretty easy to compline and use the program.<br>
-After downloading it, all you have to do is to open the terminal, enter folder "balance-main"’s path  , and input:<br>
+After downloading it, all you have to do is to open the terminal, enter folder "balance-main"’s path  , and input:
 
- > make<br>
+ ```make```<br>
 
  And you can find the executable program named "main" in the folder.<br>
  
